@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Simple-Prompt", "01-Simple-Prompt\01-Simple-Prompt.csproj", "{B37BF597-8866-4BD1-9468-CB2CF03CE984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Inline-Functions", "02-Inline-Functions\02-Inline-Functions.csproj", "{5674C18D-2C4A-4D5D-A754-6F8034950FD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B37BF597-8866-4BD1-9468-CB2CF03CE984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37BF597-8866-4BD1-9468-CB2CF03CE984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37BF597-8866-4BD1-9468-CB2CF03CE984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37BF597-8866-4BD1-9468-CB2CF03CE984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5674C18D-2C4A-4D5D-A754-6F8034950FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5674C18D-2C4A-4D5D-A754-6F8034950FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5674C18D-2C4A-4D5D-A754-6F8034950FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5674C18D-2C4A-4D5D-A754-6F8034950FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD1228F6-2E24-4766-AD7E-4E31ABA3E352}
+	EndGlobalSection
+EndGlobal
