@@ -1,0 +1,23 @@
+﻿{
+  "schema": 1,
+  "type": "completion",
+  "description": "Rewrites a sentence in the character of Shelock Holmes",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 1000,
+      "temperature": 0
+    },
+    "gpt-4-32k": {
+      "model_id": "gpt-4-32k-0613",
+      "max_tokens": 8000,
+      "temperature": 0.3
+    }
+  },
+  "input_variables": [
+    {
+      "name": "$input",
+      "description": "The sentence you want to have rewritten",
+      "required": true
+    }
+  ]
+}
