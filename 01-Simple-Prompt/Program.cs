@@ -19,7 +19,7 @@ Console.Clear();
 var builder = Kernel.CreateBuilder();
 
 builder.Services
-    .AddLogging(loggingBuilder => loggingBuilder.AddConsole())
+    .AddLogging(loggingBuilder => loggingBuilder.AddConsole().SetMinimumLevel(LogLevel.Information))
     .AddAzureOpenAIChatCompletion(
         chatCompletionDeploymentName!,
         endpoint!,
