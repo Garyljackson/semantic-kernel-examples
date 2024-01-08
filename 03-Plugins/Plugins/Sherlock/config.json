@@ -6,11 +6,6 @@
     "default": {
       "max_tokens": 1000,
       "temperature": 0
-    },
-    "gpt-4-32k": {
-      "model_id": "gpt-4-32k-0613",
-      "max_tokens": 8000,
-      "temperature": 0.3
     }
   },
   "input_variables": [
