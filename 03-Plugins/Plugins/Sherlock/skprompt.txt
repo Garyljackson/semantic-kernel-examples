@@ -1,3 +1,0 @@
-﻿Rewrite the following in the style of Sherlock Holmes
-
-{{$input}}

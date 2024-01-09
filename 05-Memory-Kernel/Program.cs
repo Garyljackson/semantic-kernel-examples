@@ -23,10 +23,6 @@ var builder = Kernel.CreateBuilder();
 
 builder.Services
     .AddLogging(loggingBuilder => loggingBuilder.AddDebug().SetMinimumLevel(LogLevel.Trace))
-    .AddAzureOpenAIChatCompletion(
-        chatCompletionDeploymentName!,
-        endpoint!,
-        apiKey!)
     .AddAzureOpenAITextEmbeddingGeneration(
         embeddingsDeploymentName!,
         endpoint!,
@@ -44,7 +40,7 @@ var textMemory = new SemanticTextMemory(memoryStore, embeddingGenerator);
 
 var memoryPlugin = kernel.ImportPluginFromObject(new TextMemoryPlugin(textMemory));
 
-Console.WriteLine("Available Functions:");
+Console.WriteLine("Available Plugin Functions:");
 
 foreach (var function in memoryPlugin.Select(function => function.Name))
 {
@@ -53,11 +49,16 @@ foreach (var function in memoryPlugin.Select(function => function.Name))
 
 Console.WriteLine("-----------------------");
 
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info1", text: "My name is Andrea");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info2", text: "I work as a tourist operator");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info3", text: "I've been living in Seattle since 2005");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info4", text: "I visited France and Italy five times since 2015");
+
 await kernel.InvokeAsync(memoryPlugin["Save"], new KernelArguments
 {
     [TextMemoryPlugin.InputParam] = "My family is from New York",
     [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
-    [TextMemoryPlugin.KeyParam] = "info1",
+    [TextMemoryPlugin.KeyParam] = "info5",
 });
 
 var result = await kernel.InvokeAsync(memoryPlugin["Retrieve"], new KernelArguments
@@ -66,9 +67,9 @@ var result = await kernel.InvokeAsync(memoryPlugin["Retrieve"], new KernelArgume
     [TextMemoryPlugin.KeyParam] = "info1"
 });
 
-Console.WriteLine("Get value directly:");
+Console.WriteLine("Get a memory by ID:info1");
 Console.WriteLine(result.GetValue<string>());
-Console.WriteLine();
+Console.WriteLine("-------------------");
 
 result = await kernel.InvokeAsync(memoryPlugin["Recall"], new KernelArguments
 {
@@ -78,5 +79,5 @@ result = await kernel.InvokeAsync(memoryPlugin["Recall"], new KernelArguments
     [TextMemoryPlugin.RelevanceParam] = "0.79",
 });
 
-Console.WriteLine("Search:");
+Console.WriteLine("Search for a memory:");
 Console.WriteLine($"Answer: {result.GetValue<string>()}");

@@ -30,8 +30,9 @@ var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 
 var plugins = kernel.CreatePluginFromPromptDirectory(pluginFolder);
 
-var kernelArguments = new KernelArguments { { "input", "The stars are so bright tonight" } };
+var kernelArguments = new KernelArguments 
+    { { "request", "Send an email to the marketing team" } };
 
-var result = await kernel.InvokeAsync(plugins["Sherlock"], kernelArguments);
+var result = await kernel.InvokeAsync(plugins["GetIntent"], kernelArguments);
 
 Console.WriteLine(result);

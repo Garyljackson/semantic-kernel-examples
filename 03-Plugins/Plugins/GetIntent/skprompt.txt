@@ -1,0 +1,5 @@
+﻿Instructions: What is the intent of this request?
+Choices: SendEmail, SendMessage, CompleteTask, CreateDocument.
+User Input: {{$request}}
+
+Intent:

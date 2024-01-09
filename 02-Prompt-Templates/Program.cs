@@ -28,14 +28,17 @@ builder.Services
 var kernel = builder.Build();
 
 var prompt = """
-             Rewrite the following in the style of Sherlock Holmes
+          Instructions: What is the intent of this request?
+          Choices: SendEmail, SendMessage, CompleteTask, CreateDocument.
+          User Input: {{$request}}
 
-             {{$input}}
-             """;
+          Intent:
+          """;
 
 var inlineFunction = kernel.CreateFunctionFromPrompt(prompt);
 
-var kernelArguments = new KernelArguments { { "input", "The stars are so bright tonight" } };
+var kernelArguments = new KernelArguments 
+    { { "request", "Send an email to the marketing team" } };
 
 var result = await kernel.InvokeAsync(inlineFunction, kernelArguments);
 

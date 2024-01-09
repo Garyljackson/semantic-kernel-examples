@@ -37,11 +37,16 @@ var sqrtAnswer = await kernel.InvokeAsync<double>(
 
 Console.WriteLine($"The square root of 12 is {sqrtAnswer}.");
 
+var kernelArguments = new KernelArguments
+{
+    { "number1", 12 },
+    { "number2", 5 }
+};
 
 var addAnswer = await kernel.InvokeAsync<double>(
     pluginName: "MathPlugin",
     functionName: "Add",
-    new KernelArguments { { "number1", 12 }, { "number2", 5 } }
+    kernelArguments
 );
 
 Console.WriteLine($"5 added to 12 is {addAnswer}.");

@@ -27,14 +27,20 @@ builder.Services
 
 var kernel = builder.Build();
 
-List<string> coloursList = ["Red", "Green", "Blue"];
+var intentOptions = new List<string> { "SendEmail", "SendMessage", "CompleteTask", "CreateDocument" };
 
-var handlebarsPrompt = @"
-            Please describe each the following colours in 10 words or less
-             {{#each colours}}
-                 {{this}}
-             {{/each}}
-        ";
+// Note how the request placeholder doesn't have the dollar $ sign anymore for handlebar templates
+
+var handlebarsPrompt = """
+                       Instructions: What is the intent of this request?
+                       {{#each intentOptions}}
+                          {{this}}
+                       {{/each}}
+
+                       User Input: {{request}}
+
+                       Intent:
+                       """;
 
 var promptTemplateConfig = new PromptTemplateConfig
 {
@@ -44,11 +50,15 @@ var promptTemplateConfig = new PromptTemplateConfig
 
 var handlebarsFunction = kernel.CreateFunctionFromPrompt(promptTemplateConfig, new HandlebarsPromptTemplateFactory());
 
-var result= await kernel.InvokeAsync(
+var kernelArguments = new KernelArguments
+{
+    { "request", "Send an email to the marketing team" },
+    { "intentOptions", intentOptions }
+};
+
+var result = await kernel.InvokeAsync(
     handlebarsFunction,
-    new() {
-        { "colours", coloursList }
-    }
+    kernelArguments
 );
 
 

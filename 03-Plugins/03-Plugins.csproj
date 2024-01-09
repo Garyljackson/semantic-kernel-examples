@@ -10,18 +10,18 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
-    <None Remove="Plugins\Sherlock\config.json" />
-    <None Remove="Plugins\Sherlock\skprompt.txt" />
+    <None Remove="Plugins\GetIntent\config.json" />
+    <None Remove="Plugins\GetIntent\skprompt.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Plugins\Sherlock\config.json">
+    <Content Include="Plugins\GetIntent\config.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Plugins\Sherlock\skprompt.txt">
+    <Content Include="Plugins\GetIntent\skprompt.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

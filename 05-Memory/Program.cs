@@ -29,10 +29,15 @@ await textMemory.SaveInformationAsync(memoryCollectionName, id: "info4", text: "
 // Get a specific memory by ID
 var getMemoryResult = await textMemory.GetAsync(memoryCollectionName, "info2");
 
+
+Console.WriteLine("Get a memory by ID:info2");
 Console.WriteLine(getMemoryResult!.Metadata.Text);
+Console.WriteLine("------------------");
 
 var searchResults = textMemory.SearchAsync(memoryCollectionName, "Where do I live?", withEmbeddings: true, limit: 1);
 
+
+Console.WriteLine("Search for a memory:");
 await foreach (var result in searchResults)
 {
     Console.WriteLine(result.Metadata.Text);

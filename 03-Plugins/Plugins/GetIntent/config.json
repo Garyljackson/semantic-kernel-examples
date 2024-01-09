@@ -1,7 +1,7 @@
 ﻿{
   "schema": 1,
   "type": "completion",
-  "description": "Rewrites a sentence in the character of Shelock Holmes",
+  "description": "Gets the intent from a description",
   "execution_settings": {
     "default": {
       "max_tokens": 1000,
@@ -10,8 +10,8 @@
   },
   "input_variables": [
     {
-      "name": "$input",
-      "description": "The sentence you want to have rewritten",
+      "name": "$request",
+      "description": "A description of an action the user would like to perform",
       "required": true
     }
   ]

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
@@ -26,12 +27,30 @@ builder.Services
 
 var kernel = builder.Build();
 
-const string input = "The stars are so bright tonight";
+var request = "The stars are so bright tonight";
 
 var prompt = $"""
               Rewrite the following in the style of Sherlock Holmes
 
-              {input}
+              {request}
               """;
 
+
+Console.WriteLine("Sherlock Holmes Prompt:");
 Console.WriteLine(await kernel.InvokePromptAsync(prompt));
+Console.WriteLine("----------------------");
+
+request = "Send an email to the marketing team";
+
+prompt = $"""
+          Instructions: What is the intent of this request?
+          Choices: SendEmail, SendMessage, CompleteTask, CreateDocument.
+          User Input: {request}
+
+          Intent:
+          """;
+
+
+Console.WriteLine("Get Intent Prompt:");
+Console.WriteLine(await kernel.InvokePromptAsync(prompt));
+Console.WriteLine("-----------------");
