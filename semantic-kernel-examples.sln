@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Prompts", "01-Prompts\01
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Plugins", "03-Plugins\03-Plugins.csproj", "{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Native-Functions", "04-Native-Functions\04-Native-Functions.csproj", "{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

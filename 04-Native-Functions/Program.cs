@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using _04_Native_Functions.Plugins;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
@@ -26,14 +27,23 @@ builder.Services
         apiKey!,
         modelId: chatCompletionModelId);
 
+builder.Plugins.AddFromType<MathPlugin>();
+
 var kernel = builder.Build();
 
-var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
+var sqrtAnswer = await kernel.InvokeAsync<double>(
+    pluginName: "MathPlugin", 
+    functionName:"Sqrt",
+    new KernelArguments { { "number1", 12 } }
+);
 
-var plugins = kernel.CreatePluginFromPromptDirectory(pluginFolder);
+Console.WriteLine($"The square root of 12 is {sqrtAnswer}.");
 
-var kernelArguments = new KernelArguments { { "input", "The stars are so bright tonight" } };
 
-var result = await kernel.InvokeAsync(plugins["Sherlock"], kernelArguments);
+var addAnswer = await kernel.InvokeAsync<double>(
+    pluginName: "MathPlugin",
+    functionName: "Add",
+    new KernelArguments { { "number1", 12 }, { "number2", 5 } }
+);
 
-Console.WriteLine(result);
+Console.WriteLine($"5 added to 12 is {addAnswer}.");
