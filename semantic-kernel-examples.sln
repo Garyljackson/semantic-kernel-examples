@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Prompt-Templates-Handleb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Memory", "05-Memory\05-Memory.csproj", "{247A9063-8610-49D6-A273-5079783EF77C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Memory-Kernel", "05-Memory-Kernel\05-Memory-Kernel.csproj", "{C07652F9-9D7A-41E6-A598-BAA232695BC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{247A9063-8610-49D6-A273-5079783EF77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{247A9063-8610-49D6-A273-5079783EF77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{247A9063-8610-49D6-A273-5079783EF77C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
