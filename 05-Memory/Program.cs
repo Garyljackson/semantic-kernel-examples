@@ -14,22 +14,24 @@ var embeddingsDeploymentName = azureOpenAiSettings["EmbeddingsDeploymentName"];
 
 Console.Clear();
 
-var memoryBuilder = new MemoryBuilder()
-    .WithAzureOpenAITextEmbeddingGeneration(
-        embeddingsDeploymentName!,
-        endpoint!,
-        apiKey!)
-    .WithMemoryStore(new VolatileMemoryStore());
+const string memoryCollectionName = "aboutMe";
 
-var memory = memoryBuilder.Build();
+var embeddingGenerator = new AzureOpenAITextEmbeddingGenerationService(embeddingsDeploymentName!, endpoint!, apiKey!);
+var memoryStore = new VolatileMemoryStore();
 
-const string collectionName = "MyCollection";
+var textMemory = new SemanticTextMemory(memoryStore, embeddingGenerator);
 
-await memory.SaveInformationAsync(collectionName, "Oranges are the largest citrus fruit in the world. They originated around 4000 B.C. in Southeast Asia, from where they spread to India.", "1");
-await memory.SaveInformationAsync(collectionName, "Despite their name, oranges are not always orange. Depending on the local climate and growing conditions, the skin of the fruit can range from green to yellow to the more familiar orange color.", "2");
-await memory.SaveInformationAsync(collectionName, "There are over 600 varieties of oranges. The most common types include the navel orange, the Valencia orange, and the Hamlin orange. Each type has its own unique taste, texture, and color.", "3");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info1", text: "My name is Andrea");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info2", text: "I work as a tourist operator");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info3", text: "I've been living in Seattle since 2005");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info4", text: "I visited France and Italy five times since 2015");
 
-var searchResults = memory.SearchAsync(collectionName, "Are oranges always orange?", withEmbeddings: true, limit: 1);
+// Get a specific memory by ID
+var getMemoryResult = await textMemory.GetAsync(memoryCollectionName, "info2");
+
+Console.WriteLine(getMemoryResult!.Metadata.Text);
+
+var searchResults = textMemory.SearchAsync(memoryCollectionName, "Where do I live?", withEmbeddings: true, limit: 1);
 
 await foreach (var result in searchResults)
 {
