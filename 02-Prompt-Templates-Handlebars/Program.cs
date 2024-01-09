@@ -13,7 +13,6 @@ var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");
 var endpoint = azureOpenAiSettings["Endpoint"];
 var apiKey = azureOpenAiSettings["ApiKey"];
 var chatCompletionDeploymentName = azureOpenAiSettings["ChatCompletionDeploymentName"];
-var chatCompletionModelId = azureOpenAiSettings["ChatCompletionModelId"];
 
 Console.Clear();
 
@@ -24,8 +23,7 @@ builder.Services
     .AddAzureOpenAIChatCompletion(
         chatCompletionDeploymentName!,
         endpoint!,
-        apiKey!,
-        modelId: chatCompletionModelId);
+        apiKey!);
 
 var kernel = builder.Build();
 

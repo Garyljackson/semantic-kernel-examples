@@ -12,7 +12,6 @@ var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");
 var endpoint = azureOpenAiSettings["Endpoint"];
 var apiKey = azureOpenAiSettings["ApiKey"];
 var chatCompletionDeploymentName = azureOpenAiSettings["ChatCompletionDeploymentName"];
-var chatCompletionModelId = azureOpenAiSettings["ChatCompletionModelId"];
 
 Console.Clear();
 
@@ -23,12 +22,11 @@ builder.Services
     .AddAzureOpenAIChatCompletion(
         chatCompletionDeploymentName!,
         endpoint!,
-        apiKey!,
-        modelId: chatCompletionModelId);
+        apiKey!);
 
 var kernel = builder.Build();
 
-var input = "The stars are so bright tonight";
+const string input = "The stars are so bright tonight";
 
 var prompt = $"""
               Rewrite the following in the style of Sherlock Holmes

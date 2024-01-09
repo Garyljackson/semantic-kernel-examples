@@ -23,8 +23,7 @@ builder.Services
     .AddAzureOpenAIChatCompletion(
         chatCompletionDeploymentName!,
         endpoint!,
-        apiKey!,
-        modelId: chatCompletionModelId);
+        apiKey!);
 
 var kernel = builder.Build();
 
