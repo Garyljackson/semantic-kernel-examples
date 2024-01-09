@@ -3,19 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-Prompt-Templates", "02-Prompt-Templates\02-Prompt-Templates.csproj", "{0E46669F-DA11-4B92-A768-47B0E3E3F9E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Prompt-Templates", "02-Prompt-Templates\02-Prompt-Templates.csproj", "{0E46669F-DA11-4B92-A768-47B0E3E3F9E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-Prompts", "01-Prompts\01-Prompts.csproj", "{1B224AAE-29E4-448F-990C-D6B58BF4637F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Prompts", "01-Prompts\01-Prompts.csproj", "{1B224AAE-29E4-448F-990C-D6B58BF4637F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-Plugins", "03-Plugins\03-Plugins.csproj", "{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Native-Functions", "04-Native-Functions\04-Native-Functions.csproj", "{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Plugins", "03-Plugins\03-Plugins.csproj", "{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Prompt-Templates-Handlebars", "02-Prompt-Templates-Handlebars\02-Prompt-Templates-Handlebars.csproj", "{50A791BB-5566-42A9-9118-80D841473593}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Memory", "05-Memory\05-Memory.csproj", "{247A9063-8610-49D6-A273-5079783EF77C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Prompt-User-Roles", "03-Prompt-User-Roles\03-Prompt-User-Roles.csproj", "{F8734154-9798-4AF0-AC14-7162A45AE9C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Memory-Kernel", "05-Memory-Kernel\05-Memory-Kernel.csproj", "{C07652F9-9D7A-41E6-A598-BAA232695BC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05-Native-Functions", "05-Native-Functions\05-Native-Functions.csproj", "{3F89B005-68F4-4A0A-AA49-CAAEE606A432}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-Memory", "06-Memory\06-Memory.csproj", "{1DE6A0ED-6E09-4D8E-866E-40DC32F918DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-Memory-Kernel", "06-Memory-Kernel\06-Memory-Kernel.csproj", "{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,22 +37,26 @@ Global
 		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA056C2A-D83E-4BE8-B969-C1E3242A3FFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Release|Any CPU.Build.0 = Release|Any CPU
-		{247A9063-8610-49D6-A273-5079783EF77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{247A9063-8610-49D6-A273-5079783EF77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{247A9063-8610-49D6-A273-5079783EF77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{247A9063-8610-49D6-A273-5079783EF77C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C07652F9-9D7A-41E6-A598-BAA232695BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8734154-9798-4AF0-AC14-7162A45AE9C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8734154-9798-4AF0-AC14-7162A45AE9C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8734154-9798-4AF0-AC14-7162A45AE9C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8734154-9798-4AF0-AC14-7162A45AE9C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F89B005-68F4-4A0A-AA49-CAAEE606A432}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F89B005-68F4-4A0A-AA49-CAAEE606A432}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F89B005-68F4-4A0A-AA49-CAAEE606A432}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F89B005-68F4-4A0A-AA49-CAAEE606A432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE6A0ED-6E09-4D8E-866E-40DC32F918DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE6A0ED-6E09-4D8E-866E-40DC32F918DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE6A0ED-6E09-4D8E-866E-40DC32F918DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE6A0ED-6E09-4D8E-866E-40DC32F918DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
