@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-Native-Functions", "04-N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Prompt-Templates-Handlebars", "02-Prompt-Templates-Handlebars\02-Prompt-Templates-Handlebars.csproj", "{50A791BB-5566-42A9-9118-80D841473593}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-Memory", "05-Memory\05-Memory.csproj", "{247A9063-8610-49D6-A273-5079783EF77C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{50A791BB-5566-42A9-9118-80D841473593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Release|Any CPU.Build.0 = Release|Any CPU
+		{247A9063-8610-49D6-A273-5079783EF77C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{247A9063-8610-49D6-A273-5079783EF77C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{247A9063-8610-49D6-A273-5079783EF77C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{247A9063-8610-49D6-A273-5079783EF77C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
