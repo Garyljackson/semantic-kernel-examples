@@ -5,10 +5,6 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Prompt-Templates", "02-Prompt-Templates\02-Prompt-Templates.csproj", "{0E46669F-DA11-4B92-A768-47B0E3E3F9E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Prompts", "01-Prompts\01-Prompts.csproj", "{1B224AAE-29E4-448F-990C-D6B58BF4637F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Plugins", "03-Plugins\03-Plugins.csproj", "{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-Prompt-Templates-Handlebars", "02-Prompt-Templates-Handlebars\02-Prompt-Templates-Handlebars.csproj", "{50A791BB-5566-42A9-9118-80D841473593}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03-Prompt-User-Roles", "03-Prompt-User-Roles\03-Prompt-User-Roles.csproj", "{F8734154-9798-4AF0-AC14-7162A45AE9C0}"
@@ -18,6 +14,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-Memory", "06-Memory\06-Memory.csproj", "{1DE6A0ED-6E09-4D8E-866E-40DC32F918DB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "06-Memory-Kernel", "06-Memory-Kernel\06-Memory-Kernel.csproj", "{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01-Prompt", "01-Prompt\01-Prompt.csproj", "{FB529A56-A41D-47A7-8653-59FAAEB7E052}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04-Plugins", "04-Plugins\04-Plugins.csproj", "{36ADB22D-16E8-468A-AD11-3A04375A1BA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,6 @@ Global
 		{0E46669F-DA11-4B92-A768-47B0E3E3F9E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E46669F-DA11-4B92-A768-47B0E3E3F9E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E46669F-DA11-4B92-A768-47B0E3E3F9E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B224AAE-29E4-448F-990C-D6B58BF4637F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B224AAE-29E4-448F-990C-D6B58BF4637F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B224AAE-29E4-448F-990C-D6B58BF4637F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B224AAE-29E4-448F-990C-D6B58BF4637F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB32558A-DDBB-42A5-AD9E-A12747D87D1F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50A791BB-5566-42A9-9118-80D841473593}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -57,6 +49,14 @@ Global
 		{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE8D5DFB-79D3-4B06-8FEF-7496648EA5CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB529A56-A41D-47A7-8653-59FAAEB7E052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB529A56-A41D-47A7-8653-59FAAEB7E052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB529A56-A41D-47A7-8653-59FAAEB7E052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB529A56-A41D-47A7-8653-59FAAEB7E052}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36ADB22D-16E8-468A-AD11-3A04375A1BA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36ADB22D-16E8-468A-AD11-3A04375A1BA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36ADB22D-16E8-468A-AD11-3A04375A1BA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36ADB22D-16E8-468A-AD11-3A04375A1BA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
