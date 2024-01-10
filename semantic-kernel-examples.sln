@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-Memory", "07-Memory\07-M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07-Memory-Kernel", "07-Memory-Kernel\07-Memory-Kernel.csproj", "{234608A5-AE4B-458F-A13C-59C8EA9BCFB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-Agent", "06-Agent\06-Agent.csproj", "{AC438130-6927-496A-A78F-CA78F00BE43F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{234608A5-AE4B-458F-A13C-59C8EA9BCFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{234608A5-AE4B-458F-A13C-59C8EA9BCFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{234608A5-AE4B-458F-A13C-59C8EA9BCFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC438130-6927-496A-A78F-CA78F00BE43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC438130-6927-496A-A78F-CA78F00BE43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC438130-6927-496A-A78F-CA78F00BE43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC438130-6927-496A-A78F-CA78F00BE43F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
