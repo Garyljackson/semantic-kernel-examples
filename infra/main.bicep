@@ -8,3 +8,6 @@ module app 'app/app.bicep' = {
     openAiName: openAiName
   }
 }
+
+output endpoint string = app.outputs.endpoint
+output apiKey string = app.outputs.apiKey

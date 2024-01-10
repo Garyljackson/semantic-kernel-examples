@@ -23,3 +23,7 @@ resource cognitiveServicesAccount 'Microsoft.CognitiveServices/accounts@2023-10-
 }
 
 output name string = cognitiveServicesAccount.name
+
+#disable-next-line outputs-should-not-contain-secrets
+output apiKey string = cognitiveServicesAccount.listKeys().key1
+output endpoint string = cognitiveServicesAccount.properties.endpoint

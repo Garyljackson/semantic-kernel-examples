@@ -31,3 +31,6 @@ module textEmbeddingModel '../modules/model-deployment.bicep' = {
     completionModel
   ]
 }
+
+output endpoint string = azureOpenAi.outputs.endpoint
+output apiKey string = azureOpenAi.outputs.apiKey
