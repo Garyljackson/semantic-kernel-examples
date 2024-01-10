@@ -5,9 +5,11 @@ using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
+using System.Reflection;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddUserSecrets(Assembly.GetExecutingAssembly(), true)
     .Build();
 
 var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");

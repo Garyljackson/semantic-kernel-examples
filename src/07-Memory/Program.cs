@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.Memory;
+using System.Reflection;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddUserSecrets(Assembly.GetExecutingAssembly(), true)
     .Build();
 
 var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");
@@ -30,15 +32,17 @@ await textMemory.SaveInformationAsync(memoryCollectionName, id: "info4", text: "
 var getMemoryResult = await textMemory.GetAsync(memoryCollectionName, "info2");
 
 
-Console.WriteLine("Get a memory by ID:info2");
+Console.WriteLine("Get a memory by ID: info2");
 Console.WriteLine(getMemoryResult!.Metadata.Text);
 Console.WriteLine("------------------");
 
 var searchResults = textMemory.SearchAsync(memoryCollectionName, "Where do I live?", withEmbeddings: true, limit: 1);
 
 
-Console.WriteLine("Search for a memory:");
+Console.WriteLine("Search for a memory: Where do I live?");
 await foreach (var result in searchResults)
 {
     Console.WriteLine(result.Metadata.Text);
 }
+
+Console.WriteLine("--------------------");

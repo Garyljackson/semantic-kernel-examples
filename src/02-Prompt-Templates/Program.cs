@@ -2,9 +2,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
+using System.Reflection;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddUserSecrets(Assembly.GetExecutingAssembly(), true)
     .Build();
 
 var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");

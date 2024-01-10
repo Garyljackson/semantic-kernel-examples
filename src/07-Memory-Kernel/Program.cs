@@ -5,9 +5,11 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.Memory;
 using Microsoft.SemanticKernel.Plugins.Memory;
+using System.Reflection;
 
 IConfiguration configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddUserSecrets(Assembly.GetExecutingAssembly(), true)
     .Build();
 
 var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");
@@ -61,23 +63,39 @@ await kernel.InvokeAsync(memoryPlugin["Save"], new KernelArguments
     [TextMemoryPlugin.KeyParam] = "info5",
 });
 
+
+Thread.Sleep(5000);
+
 var result = await kernel.InvokeAsync(memoryPlugin["Retrieve"], new KernelArguments
 {
     [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
     [TextMemoryPlugin.KeyParam] = "info1"
 });
 
-Console.WriteLine("Get a memory by ID:info1");
+Console.WriteLine("Get a memory by ID: info1");
 Console.WriteLine(result.GetValue<string>());
-Console.WriteLine("-------------------");
+Console.WriteLine("-------------------------");
 
 result = await kernel.InvokeAsync(memoryPlugin["Recall"], new KernelArguments
 {
-    [TextMemoryPlugin.InputParam] = "Ask: where do I live?",
+    [TextMemoryPlugin.InputParam] = "Ask: Where is my family from?",
     [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
-    [TextMemoryPlugin.LimitParam] = "2",
-    [TextMemoryPlugin.RelevanceParam] = "0.79",
+    [TextMemoryPlugin.LimitParam] = "1",
+    [TextMemoryPlugin.RelevanceParam] = "0.7",
 });
 
-Console.WriteLine("Search for a memory:");
+Console.WriteLine("Search for a memory: Where is my family from?");
 Console.WriteLine($"Answer: {result.GetValue<string>()}");
+Console.WriteLine("--------------------------------------");
+
+result = await kernel.InvokeAsync(memoryPlugin["Recall"], new KernelArguments
+{
+    [TextMemoryPlugin.InputParam] = "Ask: What industry do I work in?",
+    [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
+    [TextMemoryPlugin.LimitParam] = "1",
+    [TextMemoryPlugin.RelevanceParam] = "0.7",
+});
+
+Console.WriteLine("Search for a memory: What industry do I work in?");
+Console.WriteLine($"Answer: {result.GetValue<string>()}");
+Console.WriteLine("--------------------------------------");
