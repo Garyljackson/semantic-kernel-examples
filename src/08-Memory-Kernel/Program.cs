@@ -8,7 +8,7 @@ using Microsoft.SemanticKernel.Plugins.Memory;
 using System.Reflection;
 
 IConfiguration configuration = new ConfigurationBuilder()
-    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+    .AddJsonFile("AppSettings.json", optional: true, reloadOnChange: true)
     .AddUserSecrets(Assembly.GetExecutingAssembly(), true)
     .Build();
 
