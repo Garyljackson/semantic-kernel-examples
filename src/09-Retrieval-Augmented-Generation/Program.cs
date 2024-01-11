@@ -62,19 +62,20 @@ await textMemory.SaveInformationAsync(memoryCollectionName, id: "info4", text: "
 await textMemory.SaveInformationAsync(memoryCollectionName, id: "info5", text: "My family is from New York");
 
 // Note: The recall function is coming from TextMemoryPlugin
+// I don't really like tightly coupling plugins - I'd probably inject the facts using a handlebars template instead.
 
 const string promptTemplate = """
-                                        Consider only the facts below when answering questions:
-                                        
-                                        BEGIN FACTS
-                                        About me: {{recall 'where did I grow up?'}}
-                                        About me: {{recall 'where do I live now?'}}
-                                        END FACTS
-                                        
-                                        Question: {{$input}}
-                                        
-                                        Answer:
-                                        """;
+                              Consider only the facts below when answering questions:
+
+                              BEGIN FACTS
+                              About me: {{recall 'where did I grow up?'}}
+                              About me: {{recall 'where do I live now?'}}
+                              END FACTS
+
+                              Question: {{$input}}
+
+                              Answer:
+                              """;
 
 var kernelFunction = kernel.CreateFunctionFromPrompt(promptTemplate, new OpenAIPromptExecutionSettings { MaxTokens = 100 });
 
