@@ -10,15 +10,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="appsettings.json" />
 		<None Remove="Plugins\GetIntent\config.json" />
 		<None Remove="Plugins\GetIntent\skprompt.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="appsettings.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
 		<Content Include="Plugins\GetIntent\config.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</Content>
