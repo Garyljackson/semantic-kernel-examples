@@ -5,7 +5,6 @@ using Microsoft.SemanticKernel;
 using System.Reflection;
 using _07_Planner.Plugins;
 using Microsoft.SemanticKernel.ChatCompletion;
-using Microsoft.SemanticKernel.Connectors.OpenAI;
 using Microsoft.SemanticKernel.Planning.Handlebars;
 
 IConfiguration configuration = new ConfigurationBuilder()
@@ -38,7 +37,7 @@ ChatHistory history = [];
 
 var planner = new HandlebarsPlanner(new HandlebarsPlannerOptions() { AllowLoops = true });
 
-var plan = await planner.CreatePlanAsync(kernel, "Add 10 to 100 then subtract 15 and then divide by 2");
+var plan = await planner.CreatePlanAsync(kernel, "How many slices of pizza would everyone get if you split 12 slices equally among 3 people");
 
 Console.WriteLine("Plan steps");
 Console.WriteLine(plan);
