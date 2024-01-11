@@ -16,6 +16,7 @@ var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");
 
 var endpoint = azureOpenAiSettings["Endpoint"];
 var apiKey = azureOpenAiSettings["ApiKey"];
+var chatCompletionDeploymentName = azureOpenAiSettings["ChatCompletionDeploymentName"];
 var embeddingsDeploymentName = azureOpenAiSettings["EmbeddingsDeploymentName"];
 
 Console.Clear();
@@ -24,6 +25,10 @@ var builder = Kernel.CreateBuilder();
 
 builder.Services
     .AddLogging(loggingBuilder => loggingBuilder.AddDebug().SetMinimumLevel(LogLevel.Trace))
+    .AddAzureOpenAIChatCompletion(
+        chatCompletionDeploymentName!,
+        endpoint!,
+        apiKey!)
     .AddAzureOpenAITextEmbeddingGeneration(
         embeddingsDeploymentName!,
         endpoint!,
@@ -54,47 +59,34 @@ await textMemory.SaveInformationAsync(memoryCollectionName, id: "info1", text: "
 await textMemory.SaveInformationAsync(memoryCollectionName, id: "info2", text: "I work as a tourist operator");
 await textMemory.SaveInformationAsync(memoryCollectionName, id: "info3", text: "I've been living in Seattle since 2005");
 await textMemory.SaveInformationAsync(memoryCollectionName, id: "info4", text: "I visited France and Italy five times since 2015");
+await textMemory.SaveInformationAsync(memoryCollectionName, id: "info5", text: "My family is from New York");
 
-await kernel.InvokeAsync(memoryPlugin["Save"], new KernelArguments
+// Note: The recall function is coming from TextMemoryPlugin
+
+const string promptTemplate = """
+                                        Consider only the facts below when answering questions:
+                                        
+                                        BEGIN FACTS
+                                        About me: {{recall 'where did I grow up?'}}
+                                        About me: {{recall 'where do I live now?'}}
+                                        END FACTS
+                                        
+                                        Question: {{$input}}
+                                        
+                                        Answer:
+                                        """;
+
+var kernelFunction = kernel.CreateFunctionFromPrompt(promptTemplate, new OpenAIPromptExecutionSettings { MaxTokens = 100 });
+
+var kernelArguments = new KernelArguments()
 {
-    [TextMemoryPlugin.InputParam] = "My family is from New York",
+    [TextMemoryPlugin.InputParam] = "Do I live in the same town where I grew up?",
     [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
-    [TextMemoryPlugin.KeyParam] = "info5",
-});
+    [TextMemoryPlugin.LimitParam] = "2",
+    [TextMemoryPlugin.RelevanceParam] = "0.79",
+};
 
+var result = await kernel.InvokeAsync(kernelFunction, kernelArguments);
 
-Thread.Sleep(5000);
-
-var result = await kernel.InvokeAsync(memoryPlugin["Retrieve"], new KernelArguments
-{
-    [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
-    [TextMemoryPlugin.KeyParam] = "info1"
-});
-
-Console.WriteLine("Get a memory by ID: info1");
-Console.WriteLine(result.GetValue<string>());
-Console.WriteLine("-------------------------");
-
-result = await kernel.InvokeAsync(memoryPlugin["Recall"], new KernelArguments
-{
-    [TextMemoryPlugin.InputParam] = "Ask: Where is my family from?",
-    [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
-    [TextMemoryPlugin.LimitParam] = "1",
-    [TextMemoryPlugin.RelevanceParam] = "0.7",
-});
-
-Console.WriteLine("Search for a memory: Where is my family from?");
+Console.WriteLine("Ask: Do I live in the same town where I grew up?");
 Console.WriteLine($"Answer: {result.GetValue<string>()}");
-Console.WriteLine("--------------------------------------");
-
-result = await kernel.InvokeAsync(memoryPlugin["Recall"], new KernelArguments
-{
-    [TextMemoryPlugin.InputParam] = "Ask: What industry do I work in?",
-    [TextMemoryPlugin.CollectionParam] = memoryCollectionName,
-    [TextMemoryPlugin.LimitParam] = "1",
-    [TextMemoryPlugin.RelevanceParam] = "0.7",
-});
-
-Console.WriteLine("Search for a memory: What industry do I work in?");
-Console.WriteLine($"Answer: {result.GetValue<string>()}");
-Console.WriteLine("--------------------------------------");
