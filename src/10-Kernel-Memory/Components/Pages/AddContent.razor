@@ -7,7 +7,7 @@
 
 <h3>Store text</h3>
 <div>
-    <textarea @bind="Content" style="width: 100%; height: 200px;" />
+    <textarea @bind="_content" style="width: 100%; height: 200px;"></textarea>
 </div>
 <div>
     <button class="btn btn-primary" @onclick="StoreText">Add text</button>
@@ -18,7 +18,7 @@
     <InputFile OnChange="@LoadFiles" />
 </div>
 <div>
-    @Output
+    @_output
 </div>
 
 <h3>Store web page</h3>
@@ -26,59 +26,59 @@
     Web page
 </div>
 <div>
-    <input type="text" @bind="Url" />
+    <input type="text" @bind="_url" />
 </div>
 <div>
     <button class="btn btn-primary" @onclick="StoreUrl">Add web page</button>
 </div>
 
 @code {
-    private string Content;
-    private string Output;
-    private string Url;
+    private string _content;
+    private string _output;
+    private string _url;
 
     private async Task StoreText()
     {
-        Output = "Loading...";
-        bool success = await MemoryService.StoreText(Content);
+        _output = "Loading...";
+        var success = await MemoryService.StoreText(_content);
         if (success)
         {
-            Output = "The text has been stored succesfully";
-            Content = string.Empty;
+            _output = "The text has been stored successfully";
+            _content = string.Empty;
         }
         else
         {
-            Output = "The text could not be stored";
+            _output = "The text could not be stored";
         }
     }
 
     private async Task LoadFiles(InputFileChangeEventArgs e)
     {
-        Output = "Saving file in progress...";
+        _output = "Saving file in progress...";
         var stream = e.File.OpenReadStream();
         var path = Path.Combine($"{Directory.GetCurrentDirectory()}//Documents", e.File.Name);
 
-        using (var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
+        await using (var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
         {
             await stream.CopyToAsync(fileStream);
         }
 
         await MemoryService.StoreFile(path, e.File.Name);
-        Output = "File stored succesfully";
+        _output = "File stored successfully";
     }
 
     private async Task StoreUrl()
     {
-        Output = "Loading...";
-        bool success = await MemoryService.StoreWebsite(Url);
+        _output = "Loading...";
+        var success = await MemoryService.StoreWebsite(_url);
         if (success)
         {
-            Output = "The url has been stored succesfully";
-            Url = string.Empty;
+            _output = "The url has been stored successfully";
+            _url = string.Empty;
         }
         else
         {
-            Output = "The url could not be stored";
+            _output = "The url could not be stored";
         }
     }
 }
