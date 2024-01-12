@@ -10,5 +10,5 @@ public interface IMemoryService
 
     Task<bool> StoreWebsite(string url);
 
-    Task<KernelResponse> AskQuestion(string question);
+    Task<KernelResponse> AskQuestion(string? question);
 }

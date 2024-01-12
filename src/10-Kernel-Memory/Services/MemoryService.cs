@@ -38,8 +38,8 @@ public class MemoryService : IMemoryService
         kernelMemory = new KernelMemoryBuilder()
             .WithAzureOpenAITextGeneration(chatConfig)
             .WithAzureOpenAITextEmbeddingGeneration(embeddingConfig)
-            .WithSimpleVectorDb()
-            //.WithSimpleVectorDb(path)
+            //.WithSimpleVectorDb()
+            .WithSimpleVectorDb(path)
             .Build<MemoryServerless>();
     }
 
