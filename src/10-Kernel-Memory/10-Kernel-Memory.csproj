@@ -1,20 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>10-Kernel-Memory</RootNamespace>
-    <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
-    <UserSecretsId>de005be3-ee5e-4f28-a7c5-1c79e75d2588</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>10-Kernel-Memory</RootNamespace>
+		<AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
+		<UserSecretsId>ABC4010A-7C42-4B82-8BFF-EEB6B0FEAB07</UserSecretsId>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.KernelMemory.Core" Version="0.26.240104.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.KernelMemory.Core" Version="0.26.240104.1" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Documents\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Documents\" />
+	</ItemGroup>
 
 </Project>

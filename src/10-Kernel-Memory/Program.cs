@@ -1,5 +1,6 @@
 using _10_Kernel_Memory.Components;
 using _10_Kernel_Memory.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Configuration.AddUserSecrets("ABC4010A-7C42-4B82-8BFF-EEB6B0FEAB07");
+builder.Configuration
+    .AddJsonFile("AppSettings.json", optional: true, reloadOnChange: true)
+    .AddUserSecrets(Assembly.GetExecutingAssembly(), true);
+
 builder.Services.AddSingleton<IMemoryService, MemoryService>();
 
 var app = builder.Build();
