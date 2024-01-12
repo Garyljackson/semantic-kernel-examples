@@ -55,15 +55,22 @@
     private async Task LoadFiles(InputFileChangeEventArgs e)
     {
         _output = "Saving file in progress...";
-        var stream = e.File.OpenReadStream();
-        var path = Path.Combine($"{Directory.GetCurrentDirectory()}//Documents", e.File.Name);
+        var stream = e.File.OpenReadStream(1024L * 1024L * 1024L);
 
-        await using (var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
+        var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "Documents");
+        var filePath = Path.Combine(folderPath, e.File.Name);
+
+        if (!Directory.Exists(folderPath))
+        {
+            Directory.CreateDirectory(folderPath);
+        }
+
+        await using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
         {
             await stream.CopyToAsync(fileStream);
         }
 
-        await MemoryService.StoreFile(path, e.File.Name);
+        await MemoryService.StoreFile(filePath, e.File.Name);
         _output = "File stored successfully";
     }
 

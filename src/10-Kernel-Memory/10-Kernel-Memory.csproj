@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>10-Kernel-Memory</RootNamespace>
     <AssemblyName>$(AssemblyName.Replace(' ', '_'))</AssemblyName>
+    <UserSecretsId>de005be3-ee5e-4f28-a7c5-1c79e75d2588</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
