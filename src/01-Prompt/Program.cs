@@ -37,7 +37,7 @@ var prompt = $"""
               """;
 
 
-Console.WriteLine("Sherlock Holmes Prompt:");
+Console.WriteLine($"Sherlock Holmes Prompt: {request}");
 Console.WriteLine(await kernel.InvokePromptAsync(prompt));
 Console.WriteLine("----------------------");
 
@@ -52,6 +52,6 @@ prompt = $"""
           """;
 
 
-Console.WriteLine("Get Intent Prompt:");
+Console.WriteLine($"Get Intent Prompt: {request}");
 Console.WriteLine(await kernel.InvokePromptAsync(prompt));
 Console.WriteLine("-----------------");

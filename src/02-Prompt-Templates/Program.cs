@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
@@ -14,7 +15,6 @@ var azureOpenAiSettings = configuration.GetSection("AzureOpenAi");
 var endpoint = azureOpenAiSettings["Endpoint"];
 var apiKey = azureOpenAiSettings["ApiKey"];
 var chatCompletionDeploymentName = azureOpenAiSettings["ChatCompletionDeploymentName"];
-var chatCompletionModelId = azureOpenAiSettings["ChatCompletionModelId"];
 
 Console.Clear();
 
@@ -29,19 +29,23 @@ builder.Services
 
 var kernel = builder.Build();
 
-var prompt = """
-          Instructions: What is the intent of this request?
-          Choices: SendEmail, SendMessage, CompleteTask, CreateDocument.
-          User Input: {{$request}}
+const string promptTemplate = """
+                              Instructions: What is the intent of this request?
+                              Choices: SendEmail, SendMessage, CompleteTask, CreateDocument.
+                              User Input: {{$request}}
 
-          Intent:
-          """;
+                              Intent:
+                              """;
 
-var inlineFunction = kernel.CreateFunctionFromPrompt(prompt);
+var inlineFunction = kernel.CreateFunctionFromPrompt(promptTemplate);
+
+const string request = "Send an email to the marketing team";
 
 var kernelArguments = new KernelArguments 
-    { { "request", "Send an email to the marketing team" } };
+    { { "request", request } };
 
 var result = await kernel.InvokeAsync(inlineFunction, kernelArguments);
+
+Console.WriteLine($"Get Intent Prompt: {request}");
 
 Console.WriteLine(result);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure.Core;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.SemanticKernel;
@@ -29,8 +30,6 @@ builder.Services
 
 var kernel = builder.Build();
 
-var intentOptions = new List<string> { "SendEmail", "SendMessage", "CompleteTask", "CreateDocument" };
-
 // Note how the request placeholder doesn't have the dollar $ sign anymore for handlebar templates
 
 var handlebarsPrompt = """
@@ -52,9 +51,13 @@ var promptTemplateConfig = new PromptTemplateConfig
 
 var handlebarsFunction = kernel.CreateFunctionFromPrompt(promptTemplateConfig, new HandlebarsPromptTemplateFactory());
 
+var intentOptions = new List<string> { "SendEmail", "SendMessage", "CompleteTask", "CreateDocument" };
+
+const string request = "Send an email to the marketing team";
+
 var kernelArguments = new KernelArguments
 {
-    { "request", "Send an email to the marketing team" },
+    { "request", request },
     { "intentOptions", intentOptions }
 };
 
@@ -63,5 +66,7 @@ var result = await kernel.InvokeAsync(
     kernelArguments
 );
 
+
+Console.WriteLine($"Get Intent Prompt: {request}");
 
 Console.WriteLine(result);

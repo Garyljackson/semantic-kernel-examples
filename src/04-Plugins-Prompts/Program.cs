@@ -32,9 +32,13 @@ var pluginFolder = Path.Combine(Directory.GetCurrentDirectory(), "Plugins");
 
 var plugins = kernel.CreatePluginFromPromptDirectory(pluginFolder);
 
+const string request = "Send an email to the marketing team";
+
 var kernelArguments = new KernelArguments 
-    { { "request", "Send an email to the marketing team" } };
+    { { "request", request } };
 
 var result = await kernel.InvokeAsync(plugins["GetIntent"], kernelArguments);
+
+Console.WriteLine($"Get Intent Prompt: {request}");
 
 Console.WriteLine(result);

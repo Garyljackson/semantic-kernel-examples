@@ -5,7 +5,7 @@ namespace _10_Kernel_Memory.Services;
 
 public class MemoryService : IMemoryService
 {
-    private IKernelMemory kernelMemory;
+    private readonly IKernelMemory _kernelMemory;
 
     public MemoryService(IConfiguration configuration)
     {
@@ -35,10 +35,9 @@ public class MemoryService : IMemoryService
 
         var path = Path.Combine($"{Directory.GetCurrentDirectory()}//Memory");
 
-        kernelMemory = new KernelMemoryBuilder()
+        _kernelMemory = new KernelMemoryBuilder()
             .WithAzureOpenAITextGeneration(chatConfig)
             .WithAzureOpenAITextEmbeddingGeneration(embeddingConfig)
-            //.WithSimpleVectorDb()
             .WithSimpleVectorDb(path)
             .Build<MemoryServerless>();
     }
@@ -47,7 +46,7 @@ public class MemoryService : IMemoryService
     {
         try
         {
-            await kernelMemory.ImportTextAsync(text);
+            await _kernelMemory.ImportTextAsync(text);
 
             return true;
         }
@@ -61,7 +60,7 @@ public class MemoryService : IMemoryService
     {
         try
         {
-            await kernelMemory.ImportDocumentAsync(path, filename);
+            await _kernelMemory.ImportDocumentAsync(path, filename);
             return true;
         }
         catch
@@ -74,7 +73,7 @@ public class MemoryService : IMemoryService
     {
         try
         {
-            await kernelMemory.ImportWebPageAsync(url);
+            await _kernelMemory.ImportWebPageAsync(url);
             return true;
         }
         catch
@@ -85,7 +84,7 @@ public class MemoryService : IMemoryService
 
     public async Task<KernelResponse> AskQuestion(string question)
     {
-        var answer = await kernelMemory.AskAsync(question);
+        var answer = await _kernelMemory.AskAsync(question);
 
         var response = new KernelResponse
         {
